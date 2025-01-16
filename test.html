@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻译助手测试页面</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <div class="test-content">
+        <h1>测试文本</h1>
+        <p>这是一段用于测试翻译功能的中文文本。你可以选中这些文字来测试翻译功能。</p>
+        <p>This is an English text for testing translation. You can select these words to test the translation feature.</p>
+    </div>
+
+    <script type="module">
+        import translator from './js/translator.js';
+        
+        // 初始化翻译器
+        translator.initTranslationPanel();
+    </script>
+
+    <script>
+    // 注册 Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => {
+          console.log('ServiceWorker 注册成功:', registration.scope);
+        })
+        .catch(error => {
+          console.log('ServiceWorker 注册失败:', error);
+        });
+    }
+    </script>
+</body>
+</html> 
